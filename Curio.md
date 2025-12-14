@@ -39,18 +39,18 @@ Track: EdTech | Constraints: 6-Hour Hackathon
 | :---- | :---- | :---- | :---- |
 | **FR-01** | **Session Management** | Generate unique, collision-resistant 6-char codes. | P0 |
 | **FR-02** | **Anonymous Posting** | Students post messages linked *only* to the Session Code. | P0 |
-| **FR-03** | **AI Agent (Guard)** | Single Agent using **Google ADK \+ Gemini 2.5 Flash**. Checks toxicity FIRST. If safe, generates an answer. | P0 |
+| **FR-03** | **AI Agent (Guard)** | Single Agent using **Google ADK + Gemini 2.5 Flash**. Checks toxicity FIRST. If safe, generates an answer. | P0 |
 | **FR-04** | **Polling Sync** | Frontend polls /updates endpoint every 3s to fetch new messages. | P0 |
 | **FR-05** | **Teacher Auth** | Simple Token/Basic Auth for creating sessions. | P1 |
 
 ## **4\. Technical Architecture**
 
-* **Frontend:** React 18 \+ Tailwind CSS (Vite build).  
+* **Frontend:** React 19 + Tailwind CSS (Vite build).  
 * **Backend:** FastAPI (Python 3.11+).  
-* **Database:** SQLite (File-based for speed).  
+* **Database:** Supabase (PostgreSQL).  
 * **AI Engine:** Google Gen AI SDK (Agent Development Kit).  
-  * **Model:** gemini-2.5-flash (Optimized for \<1s latency).  
-  * **Pattern:** Single-Shot Agent (System Prompt combines Toxicity Guard \+ Tutor Persona).
+  * **Model:** gemini-2.5-flash (Optimized for <1s latency).  
+  * **Pattern:** Single-Shot Agent (System Prompt combines Toxicity Guard + Tutor Persona).
 
 ## **5\. Data Entities (Schema Draft)**
 
@@ -99,4 +99,3 @@ This section defines the inputs/outputs required for the OpenAPI generator.
 * **GET /questions/{session\_id}** (Polling Endpoint)  
   * **Input:** session\_id (path param), last\_seen\_timestamp (query param, optional).  
   * **Output:** List of Question objects posted *after* the timestamp.
-
