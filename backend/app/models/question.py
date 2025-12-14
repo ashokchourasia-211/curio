@@ -1,6 +1,7 @@
 import uuid
 from datetime import datetime
 
+from sqlalchemy import JSON, Column
 from sqlmodel import Field, SQLModel
 
 
@@ -11,9 +12,11 @@ class Question(SQLModel, table=True):  # type: ignore[call-arg]
 
     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
     session_id: uuid.UUID = Field(foreign_key="sessions.id", index=True)
+    group_id: uuid.UUID | None = Field(default=None, foreign_key="question_groups.id")
     student_hash: str
     student_name: str
     text: str
+    embedding: list[float] | None = Field(default=None, sa_column=Column(JSON))
     ai_response: str | None = Field(default=None)
     is_flagged: bool = Field(default=False)
     created_at: datetime = Field(default_factory=datetime.utcnow)

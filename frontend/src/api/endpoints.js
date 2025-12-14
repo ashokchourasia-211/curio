@@ -22,3 +22,14 @@ export const questionsApi = {
         return response.data;
     },
 };
+
+export const groupsApi = {
+    getSessionGroups: async (sessionId) => {
+        const response = await apiClient.get(`/sessions/${sessionId}/groups`);
+        return response.data;
+    },
+    answerGroup: async (groupId, answer) => {
+        const response = await apiClient.post(`/groups/${groupId}/answer`, { answer });
+        return response.data;
+    },
+};

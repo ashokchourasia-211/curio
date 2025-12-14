@@ -59,12 +59,39 @@ def create_question(
     # Process through AI agent
     ai_response = process_question_sync(text)
 
+    # Smart Grouping Logic
+    from app.services.embedding import generate_embedding
+    from app.services.grouping import find_or_create_group
+
+    embedding = []
+    group_id = None
+
+    if not ai_response.is_flagged:
+        try:
+            embedding = generate_embedding(text)
+            if embedding:
+                group_id = find_or_create_group(
+                    db=db,
+                    session_id=session_id,
+                    new_question_text=text,
+                    new_embedding=embedding,
+                )
+        except Exception as e:
+            # Fallback gracefully if embedding/grouping fails
+            print(f"GROUPING ERROR: {e}")
+            import traceback
+
+            traceback.print_exc()
+            pass
+
     # Create question record
     question = Question(
         session_id=session_id,
+        group_id=group_id,
         student_hash=student_hash,
         student_name=generate_display_name(),
         text=text,
+        embedding=embedding if embedding else None,
         ai_response=ai_response.text if not ai_response.is_flagged else None,
         is_flagged=ai_response.is_flagged,
     )

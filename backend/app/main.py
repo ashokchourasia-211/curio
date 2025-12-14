@@ -8,7 +8,7 @@ from app.api import v1_router
 from app.db.database import create_db_and_tables
 
 # Import models to register them with SQLModel metadata
-from app.models import Session, Question  # noqa: F401
+from app.models import Session, Question, QuestionGroup  # noqa: F401
 
 
 @asynccontextmanager
