@@ -47,7 +47,7 @@ Track: EdTech | Constraints: 6-Hour Hackathon
 
 * **Frontend:** React 19 + Tailwind CSS (Vite build).  
 * **Backend:** FastAPI (Python 3.11+).  
-* **Database:** Supabase (PostgreSQL).  
+* **Database:** SQLite (File-based for speed).  
 * **AI Engine:** Google Gen AI SDK (Agent Development Kit).  
   * **Model:** gemini-2.5-flash (Optimized for <1s latency).  
   * **Pattern:** Single-Shot Agent (System Prompt combines Toxicity Guard + Tutor Persona).
