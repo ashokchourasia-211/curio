@@ -83,7 +83,7 @@ async def process_question(question_text: str) -> AIResponse:
         user_id="anonymous",
         new_message=content,
     ):
-        if hasattr(event, "content") and event.content:
+        if hasattr(event, "content") and event.content and event.content.parts:
             for part in event.content.parts:
                 if hasattr(part, "text") and part.text:
                     response_text += part.text

@@ -22,7 +22,7 @@ def generate_embedding(text: str) -> list[float]:
     # Check the structure of response. It usually has 'embedding' or 'embeddings'.
     # For a single string input, it should return one embedding.
     if response.embeddings:
-        return response.embeddings[0].values
+        return response.embeddings[0].values or []
 
     # Fallback/Error handling (simplified)
     return []

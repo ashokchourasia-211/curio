@@ -30,9 +30,7 @@ def get_session_groups(
 
     response = []
     for group in groups:
-        count = db.exec(
-            select(func.count(Question.id)).where(Question.group_id == group.id)
-        ).one()
+        count = db.exec(select(func.count()).where(Question.group_id == group.id)).one()
 
         response.append(
             QuestionGroupResponse(

@@ -115,6 +115,6 @@ def get_questions(
     if last_seen_timestamp:
         query = query.where(Question.created_at > last_seen_timestamp)
 
-    query = query.order_by(Question.created_at)
+    query = query.order_by(Question.created_at)  # type: ignore[arg-type]
 
     return list(db.exec(query).all())
