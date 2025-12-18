@@ -35,13 +35,7 @@ dev = [
 python_version = "3.13"
 warn_return_any = true
 warn_unused_configs = true
-mypy_path = "."
-
-[[tool.mypy.overrides]]
-module = [
-    "sqlmodel",
-    "numpy",
-    "pydantic_settings",
-    "google.*"
-]
 ignore_missing_imports = true
+mypy_path = ".:backend"
+# This ensures that when running from the root, mypy can find the 'app' module inside 'backend/'
+# when --config-file=backend/pyproject.toml is used.

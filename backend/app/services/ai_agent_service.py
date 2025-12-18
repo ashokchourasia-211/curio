@@ -2,6 +2,7 @@ import asyncio
 from dataclasses import dataclass
 
 from google.adk.agents import LlmAgent
+from google.adk.planners import BuiltInPlanner
 from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
 from google.genai import types
@@ -55,9 +56,15 @@ async def process_question(question_text: str) -> AIResponse:
     os.environ.setdefault("GOOGLE_API_KEY", settings.google_api_key)
 
     agent = LlmAgent(
-        model="gemini-2.0-flash",
+        model="gemini-3-flash-preview",
         name="curio_tutor",
         instruction=SYSTEM_PROMPT,
+        planner=BuiltInPlanner(
+            thinking_config=types.ThinkingConfig(
+                include_thoughts=False,
+                thinking_level=types.ThinkingLevel.LOW,
+            )
+        ),
     )
 
     session_service = InMemorySessionService()

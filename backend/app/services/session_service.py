@@ -1,6 +1,7 @@
 import random
 import string
 import uuid
+from typing import cast
 
 from sqlmodel import Session, select
 
@@ -51,9 +52,9 @@ def verify_session(db: Session, code: str) -> SessionModel | None:
             SessionModel.is_active == True,  # noqa: E712
         )
     ).first()
-    return session
+    return cast(SessionModel | None, session)
 
 
 def get_session_by_id(db: Session, session_id: uuid.UUID) -> SessionModel | None:
     """Get a session by its ID."""
-    return db.get(SessionModel, session_id)
+    return cast(SessionModel | None, db.get(SessionModel, session_id))
