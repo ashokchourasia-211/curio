@@ -14,7 +14,7 @@ import { Label } from '@/components/ui/label';
 
 export default function TeacherDashboard() {
   const [subject, setSubject] = useState('');
-  const [teacherId, setTeacherId] = useState('teacher_001');
+  const [teacherId, setTeacherId] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const createSession = useCreateSession();
