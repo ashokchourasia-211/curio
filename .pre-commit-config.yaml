@@ -3,9 +3,10 @@ repos:
     rev: v0.14.9
     hooks:
       - id: ruff
-        args: ["--fix"]
+        args: ["--fix", "--cache-dir=backend/.ruff_cache"]
         files: ^backend/
       - id: ruff-format
+        args: ["--cache-dir=backend/.ruff_cache"]
         files: ^backend/
 
   - repo: https://github.com/psf/black
@@ -18,7 +19,7 @@ repos:
     rev: v1.19.0
     hooks:
       - id: mypy
-        args: ["--config-file=backend/pyproject.toml", "--explicit-package-bases"]
+        args: ["--config-file=backend/pyproject.toml", "--explicit-package-bases", "--cache-dir=backend/.mypy_cache"]
         additional_dependencies: ["types-requests", "types-setuptools"]
         files: ^backend/
 
