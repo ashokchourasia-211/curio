@@ -53,8 +53,9 @@ uv sync
 # pip install -e .
 
 # Set up Environment Variables
-# Create a .env file in the backend directory and add your Google API Key
-echo "GOOGLE_API_KEY=your_google_api_key_here" > .env
+# Copy the example environment file and add your Google API Key
+cp .env.example .env
+# Now edit .env and replace 'your_google_api_key_here' with your actual Gemini API key
 ```
 
 To run the backend development server:
