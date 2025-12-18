@@ -35,19 +35,13 @@ dev = [
 python_version = "3.13"
 warn_return_any = true
 warn_unused_configs = true
+mypy_path = "."
 
 [[tool.mypy.overrides]]
-module = "sqlmodel"
-ignore_missing_imports = true
-
-[[tool.mypy.overrides]]
-module = "numpy"
-ignore_missing_imports = true
-
-[[tool.mypy.overrides]]
-module = "pydantic_settings"
-ignore_missing_imports = true
-
-[[tool.mypy.overrides]]
-module = "google.*"
+module = [
+    "sqlmodel",
+    "numpy",
+    "pydantic_settings",
+    "google.*"
+]
 ignore_missing_imports = true
