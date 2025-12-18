@@ -1,4 +1,4 @@
-# Handle line endings automatically for files detected as text 
+# Handle line endings automatically for files detected as text
 # and truly leave binary files untouched.
 * text=auto
 

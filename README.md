@@ -95,7 +95,7 @@ The application will be accessible at `http://localhost:5173`.
 **Goal:** Create a classroom session and monitor student questions.
 
 1. **Start a Session:** Navigate to the **[Teacher Dashboard](http://localhost:5173/teacher)**.
-    - *Link:* `http://localhost:5173/teacher`
+   - _Link:_ `http://localhost:5173/teacher`
 2. **Create:** Enter your **Teacher ID** (e.g., `teacher_001`) and the **Subject Name** (e.g., `Physics 101`).
 3. **Share Code:** Click "Start Session". A unique **6-digit code** (e.g., `PHY-88`) will be generated. Share this code with your students.
 4. **Monitor:** You will be redirected to the **Monitor Dashboard**. Watch questions appear in real-time, grouped by topic.
@@ -105,12 +105,12 @@ The application will be accessible at `http://localhost:5173`.
 **Goal:** Join a session and ask questions anonymously.
 
 1. **Join:** Go to the **[Home Page](http://localhost:5173)**.
-    - *Link:* `http://localhost:5173`
+   - _Link:_ `http://localhost:5173`
 2. **Enter Code:** Type in the **6-digit Session Code** provided by your teacher (e.g., `PHY-88`).
 3. **Ask:** Type your question in the text box.
 4. **Learn:**
-    - Receive an **immediate answer** from the AI agent.
-    - See other students' questions (anonymously).
+   - Receive an **immediate answer** from the AI agent.
+   - See other students' questions (anonymously).
 
 ## 🤝 Contributing
 

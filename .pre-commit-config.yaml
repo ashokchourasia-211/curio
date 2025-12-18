@@ -1,44 +1,65 @@
 repos:
+  # --- General Hooks (Applied to the whole repository) ---
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-added-large-files
+
+  # --- Backend (Python specific) ---
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.9
+    rev: v0.9.1
     hooks:
       - id: ruff
-        args: ["--fix", "--cache-dir=backend/.ruff_cache"]
+        args: ['--fix', '--cache-dir=backend/.ruff_cache']
         files: ^backend/
       - id: ruff-format
-        args: ["--cache-dir=backend/.ruff_cache"]
+        args: ['--cache-dir=backend/.ruff_cache']
         files: ^backend/
 
   - repo: https://github.com/psf/black
-    rev: 25.12.0
+    rev: 24.10.0
     hooks:
       - id: black
         files: ^backend/
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.19.0
+    rev: v1.14.1
     hooks:
       - id: mypy
-        args: ["--config-file=backend/pyproject.toml", "--explicit-package-bases", "--cache-dir=backend/.mypy_cache"]
-        additional_dependencies: ["types-requests", "types-setuptools"]
+        args:
+          [
+            '--config-file=backend/pyproject.toml',
+            '--explicit-package-bases',
+            '--cache-dir=backend/.mypy_cache',
+          ]
+        additional_dependencies: ['types-requests', 'types-setuptools']
         files: ^backend/
 
   - repo: https://github.com/PyCQA/bandit
-    rev: 1.9.2
+    rev: 1.8.2
     hooks:
       - id: bandit
-        args: ["-ll"]
+        args: ['-ll']
         files: ^backend/
 
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0
+  # --- Frontend & General Formatting ---
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8
     hooks:
-      - id: check-yaml
-        files: ^backend/
-      - id: check-added-large-files
-        files: ^backend/
-      - id: end-of-file-fixer
-        files: ^backend/
-      - id: trailing-whitespace
-        files: ^backend/
+      - id: prettier
+        types_or: [javascript, jsx, css, html, json, yaml, markdown]
+        # We exclude backend because Ruff/Black handle those formats better there
+        exclude: ^backend/
 
+  - repo: local
+    hooks:
+      - id: frontend-eslint
+        name: Frontend ESLint
+        entry: bash -c "cd frontend && npm run lint"
+        language: system
+        files: ^frontend/
+        pass_filenames: false
