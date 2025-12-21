@@ -5,7 +5,7 @@ Curio is an AI-augmented classroom Q&A platform designed to remove the fear of j
 ## 🚀 Features
 
 - **Anonymous Participation:** Students join sessions via a 6-digit code without needing to login.
-- **AI-Powered Answers:** An AI agent powered by **Google Gemini 1.5 Flash (via Gemini 3-Flash-Preview)** provides instant, thinking-capable responses to student doubts.
+- **AI-Powered Answers:** An AI agent powered by **Gemini 3-Flash-Preview** provides instant, thinking-capable responses to student doubts.
 - **Smart Grouping:** Similar student questions are automatically grouped into threads using vector embeddings (**text-embedding-004**) to help teachers focus on key confusion areas.
 - **Toxicity Guard:** All questions are screened for toxicity before being processed by the AI.
 - **Live Teacher Dashboard:** Teachers can monitor class trends, view grouped questions, and provide a single answer to multiple similar queries.
